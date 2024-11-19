@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Sebastian estuvo aca
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProductosController;
+
+Route::resource('productos', ProductosController::class);
