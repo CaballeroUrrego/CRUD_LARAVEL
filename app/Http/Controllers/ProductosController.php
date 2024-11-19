@@ -36,7 +36,16 @@ return view('productos.create');
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required|numeric',
+        ]);
+
+        Productos::create($request->all());
+
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto creado exitosamente.');
     }
 
     /**
