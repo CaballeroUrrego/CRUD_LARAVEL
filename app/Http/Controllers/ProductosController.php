@@ -67,7 +67,7 @@ return view('productos.create');
      */
     public function edit(productos $productos)
     {
-        //
+ return view('productos.edit', compact('productos'));
     }
 
     /**
@@ -77,9 +77,18 @@ return view('productos.create');
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, productos $productos)
+    public function update(Request $request, Productos $producto)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required|numeric',
+        ]);
+
+        $producto->update($request->all());
+
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto actualizado exitosamente.');
     }
 
     /**
@@ -90,6 +99,11 @@ return view('productos.create');
      */
     public function destroy(productos $productos)
     {
-        //
+
+        $productos->delete();
+
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto eliminado  
+     exitosamente.');
     }
 }
