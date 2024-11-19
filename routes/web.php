@@ -19,7 +19,4 @@ Route::get('/', function () {
 
 
 
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\ProductosController;
 
-Route::resource('productos', ProductosController::class);
